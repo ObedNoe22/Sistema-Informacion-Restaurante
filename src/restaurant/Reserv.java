@@ -117,9 +117,9 @@ public class Reserv extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        Login menu=new Login();
-        menu.setVisible(true);
-        this.setVisible(false);
+        Login menu=new Login(); //Crea variable de pantalla
+        menu.setVisible(true);  //Pone visible la nueva pantalla
+        this.setVisible(false);  //Oculta esta
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
