@@ -15,7 +15,9 @@ public class Meseros extends javax.swing.JFrame {
      * Creates new form Meseros
      */
     public Meseros() {
+        
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -15,7 +15,9 @@ public class Almacen extends javax.swing.JFrame {
      * Creates new form Almacen
      */
     public Almacen() {
+        
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

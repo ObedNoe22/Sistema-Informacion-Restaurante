@@ -15,7 +15,9 @@ public class Reserv extends javax.swing.JFrame {
      * Creates new form Reserv
      */
     public Reserv() {
+        
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

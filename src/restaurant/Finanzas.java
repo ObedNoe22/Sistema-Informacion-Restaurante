@@ -15,7 +15,9 @@ public class Finanzas extends javax.swing.JFrame {
      * Creates new form Finanzas
      */
     public Finanzas() {
+        
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
