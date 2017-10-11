@@ -39,6 +39,11 @@ public class Almacen extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tekton Pro", 0, 18)); // NOI18N
         jButton1.setText("Cartera de provedores");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tekton Pro", 0, 18)); // NOI18N
         jButton2.setText("Almacen");
@@ -104,6 +109,10 @@ public class Almacen extends javax.swing.JFrame {
         menu.setVisible(true);  //Pone visible la nueva pantalla
         this.setVisible(false);  //Oculta esta
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
