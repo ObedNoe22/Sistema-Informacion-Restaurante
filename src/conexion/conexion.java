@@ -5,21 +5,51 @@
  */
 package conexion;
 import java.sql.*;
+
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+
 import javax.swing.JOptionPane;
+
 /**
- *
- * @author ObedNoe22
- */
-public class conexion {
-    Connection conect=null;
-   public Connection conexion(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conect = DriverManager.getConnection("jdbc:mysql://localhost/tesoreria","root","");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error "+e);
-        }
-    return conect;
-    }
+
+*
+
+* @author lupita
+
+*/
+
+public class conexion{
+
+public static final String db="restaurante";  //nombre de base de datos
+
+private static final String user="root"; //nombre de usuario
+
+private static final String pass=""; //contraseña de tu MySQL
+
+private static final String url="jdbc:mysql://localhost/restaurante";
+
+private static  Connection Conn;
+
+ 
+
+public static Connection getConnection(){
+
+try{
+
+Conn=DriverManager.getConnection(url,user,pass);
+
+}catch(SQLException e){
+
+JOptionPane.showMessageDialog(null, "error de conexion "+e.getMessage());
+
 }
 
+return Conn;
+
+}
+
+ 
+
+}
