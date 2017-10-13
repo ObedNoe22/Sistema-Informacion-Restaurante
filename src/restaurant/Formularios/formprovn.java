@@ -299,7 +299,8 @@ public class formprovn extends javax.swing.JFrame {
             jTextField6.setText("");
             jTextField7.setText("");
             jTextField8.setText("");
-            
+            jDateChooser1.setDate(null);
+            jDateChooser2.setDate(null);
             }
         } 
 

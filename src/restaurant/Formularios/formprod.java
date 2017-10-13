@@ -8,12 +8,16 @@ package restaurant.Formularios;
 import conexion.conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -90,8 +94,15 @@ public class formprod extends javax.swing.JFrame {
             }
         });
 
+        jDateChooser1.setDateFormatString("YYYY-MM-dd");
+
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Cancelar");
@@ -204,6 +215,43 @@ public class formprod extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String prod,emp,nomv,f;
+        Date cad;
+        int cant;
+        prod=jTextField1.getText();
+        cant=Integer.parseInt(jTextField2.getText());
+        cad=jDateChooser1.getDate();
+         String formato = jDateChooser1.getDateFormatString();
+        SimpleDateFormat sdf = new SimpleDateFormat(formato);
+        f = String.valueOf(sdf.format(cad));
+        nomv= (String) jComboBox2.getSelectedItem();
+        emp=(String) jComboBox1.getSelectedItem();
+        Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
+            String sql="INSERT INTO productos(no_producto,producto,cantidad,caducidad,empresaven,nombrev) VALUES (?,?,?,?,?,?)";
+             try {
+            PreparedStatement pst  = conn.prepareStatement(sql);
+            pst.setString(1, null);
+            pst.setString(2, prod);
+            pst.setInt(3, cant);
+            pst.setString(4, f);
+            pst.setString(5, emp);
+            pst.setString(6, nomv);
+            int n=pst.executeUpdate();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "Contacto registrado");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jComboBox1.setSelectedIndex(0);
+            jComboBox2.setSelectedIndex(0);
+            jDateChooser1.setDate(null);
+            }
+        } catch (Exception e){
+
+        JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
