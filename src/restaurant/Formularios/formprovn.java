@@ -275,7 +275,7 @@ public class formprovn extends javax.swing.JFrame {
         
         Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
             String sql="INSERT INTO provedores(No_provedor, Empresa, Nombreprov, Direccion, Fecha_entr, Fecha_ped, Producto, Cantidad, Precio_u, Total) VALUES (?,?,?,?,?,?,?,?,?,?)";
-             try {
+            try {
             PreparedStatement pst  = conn.prepareStatement(sql);
             pst.setString(1, null);
             pst.setString(2, empresa);
