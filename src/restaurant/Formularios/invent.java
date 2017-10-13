@@ -9,16 +9,25 @@ import conexion.conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import java.util.logging.*;
+import conexion.conexion;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Obed Martinez
  */
 public class invent extends javax.swing.JFrame {
-
+    DefaultTableModel modeloTabla;
+  
+            
+    
     /**
      * Creates new form invent
      */
+    
     public invent() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -27,8 +36,10 @@ public class invent extends javax.swing.JFrame {
         Statement st= null;
 
         ResultSet rs= null;
-        conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
+        conn = conexion.getConnection(); //Para tener conexión a la Base de Datos. 
+        mostrar();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,49 +63,12 @@ public class invent extends javax.swing.JFrame {
         jTable2.setForeground(new java.awt.Color(204, 102, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "No.Producto", "Producto", "Cantidad", "Caducidad", "Proveedor"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jScrollPane2.setViewportView(jTable2);
 
         jButton9.setText("Nuevo");
@@ -107,6 +81,11 @@ public class invent extends javax.swing.JFrame {
         jButton10.setText("Eliminar");
 
         jButton11.setText("Buscar");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("Salir");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -121,8 +100,8 @@ public class invent extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton12)
@@ -151,7 +130,7 @@ public class invent extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 691, Short.MAX_VALUE)
+            .addGap(0, 888, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -170,6 +149,7 @@ public class invent extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+        
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         dispose();
@@ -179,6 +159,34 @@ public class invent extends javax.swing.JFrame {
        formprod pn=new formprod();
        pn.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        Connection conn;
+        conn = conexion.getConnection();
+        int valor =Integer.parseInt( JOptionPane.showInputDialog(this,"Introduce el numero de producto a buscar "));
+
+        String mostrar="SELECT * FROM productos WHERE no_producto = "+valor+"";  
+        String [] Titulos={"No.Producto","Producto","Cantidad","Caducidad","Empresa Vendedora","Nombre del vendedor"};
+        String []Datos= new String [6];
+        modeloTabla= new DefaultTableModel (null,Titulos);
+        try {
+            Statement sqls=conn.prepareStatement(mostrar);
+            ResultSet rs = sqls.executeQuery(mostrar);
+            while(rs.next())
+            {
+                Datos[0]= rs.getString("no_producto");
+                Datos[1]= rs.getString("producto");
+                Datos[2]= rs.getString("cantidad");
+                Datos[3]= rs.getString("caducidad");
+                Datos[4]= rs.getString("empresaven");
+                Datos[5]= rs.getString("nombrev");
+                modeloTabla.addRow(Datos);
+            }
+            jTable2.setModel(modeloTabla);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,4 +232,18 @@ public class invent extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrar() {
+        DefaultTableModel modelotabla=new DefaultTableModel();
+        ResultSet rs=conexion.getTabla("SELECT * FROM productos");
+        modelotabla.setColumnIdentifiers(new Object[]{"No.Producto","Producto","Cantidad","Caducidad","Empresa Vendedora","Nombre del vendedor"});
+        try{
+            while(rs.next()){
+                modelotabla.addRow(new Object[]{rs.getString("no_producto"),rs.getString("producto"),rs.getString("cantidad"),rs.getString("caducidad"),rs.getString("empresaven"),rs.getString("nombrev")});
+            }
+            jTable2.setModel(modelotabla);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }

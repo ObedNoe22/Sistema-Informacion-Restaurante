@@ -6,16 +6,21 @@
 package restaurant.Pantallas;
 
 import java.awt.Dimension;
-import restaurant.Formularios.formprod;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
 import restaurant.Formularios.formprovn;
 import restaurant.Formularios.invent;
+import conexion.conexion;
+import javax.swing.JOptionPane;
+import java.sql.*;
+import java.sql.Connection;
 
 /**
  *
  * @author Obed Martinez
  */
 public class Almacen extends javax.swing.JFrame {
-
+DefaultTableModel modeloTabla;
     /**
      * Creates new form Almacen
      */
@@ -50,6 +55,7 @@ public class Almacen extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,61 +127,46 @@ public class Almacen extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "No.de proveedor", "Empresa", "Nombre del proveedor", "Direccion", "Fecha de entrega", "Producto", "Cantidad", "Precio Unitario", "Total"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jButton4.setText("Nuevo");
@@ -190,6 +181,11 @@ public class Almacen extends javax.swing.JFrame {
         jButton6.setText("Eliminar");
 
         jButton7.setText("Buscar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Salir");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +193,8 @@ public class Almacen extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
+
+        jTextField2.setText("jTextField2");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -210,7 +208,8 @@ public class Almacen extends javax.swing.JFrame {
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField2)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +222,9 @@ public class Almacen extends javax.swing.JFrame {
                 .addComponent(jButton7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
-                .addGap(221, 221, 221)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(183, 183, 183)
                 .addComponent(jButton8))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
@@ -258,6 +259,7 @@ public class Almacen extends javax.swing.JFrame {
         jPanel2.setVisible(true);
         this.setSize(new Dimension(1310, 600));
         this.setLocationRelativeTo(null);
+        mostrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -275,6 +277,39 @@ public class Almacen extends javax.swing.JFrame {
         invent in=new invent();
         in.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Connection conn;
+        conn = conexion.getConnection();
+        int valor =Integer.parseInt( JOptionPane.showInputDialog(this,"Introduce el numero de proveedor a buscar "));
+
+        String mostrar="SELECT * FROM provedores WHERE No_provedor = "+valor+"";  
+        String [] Titulos={"No.Proveedor","Empresa","Nombre Proveedor","Direccion","Fecha entrega","Fecha Pedido","Producto","Cantidad","Precio/u","Total"};
+        String []Datos= new String [10];
+        modeloTabla= new DefaultTableModel (null,Titulos);
+        try {
+            Statement sqls=conn.prepareStatement(mostrar);
+            ResultSet rs = sqls.executeQuery(mostrar);
+            while(rs.next())
+            {
+                Datos[0]= rs.getString("No_provedor");
+                Datos[1]= rs.getString("Empresa");
+                Datos[2]= rs.getString("Nombreprov");
+                Datos[3]= rs.getString("Direccion");
+                Datos[4]= rs.getString("Fecha_entr");
+                Datos[5]= rs.getString("Fecha_ped");
+                Datos[6]= rs.getString("Producto");
+                Datos[7]= rs.getString("Cantidad");
+                Datos[8]= rs.getString("Precio_u");
+                Datos[9]= rs.getString("Total");
+
+                modeloTabla.addRow(Datos);
+            }
+            jTable1.setModel(modeloTabla);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,5 +360,22 @@ public class Almacen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrar() {
+        DefaultTableModel modelotabla=new DefaultTableModel();
+        ResultSet rs=conexion.getTabla("SELECT * FROM provedores");
+        modelotabla.setColumnIdentifiers(new Object[]{"No.Proveedor","Empresa","Nombre Proveedor","Direccion","Fecha entrega","Fecha Pedido","Producto","Cantidad","Precio/u","Total"});
+        try{
+            while(rs.next()){
+                modelotabla.addRow(new Object[]{rs.getString("No_provedor"),rs.getString("Empresa"),rs.getString("Nombreprov"),rs.getString("Direccion"),rs.getString("Fecha_entr"),rs.getString("Fecha_ped"),rs.getString("Producto"),rs.getString("Cantidad"),rs.getString("Precio_u"),rs.getString("Total")});
+            }
+            jTable1.setModel(modelotabla);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+
+    }
 }

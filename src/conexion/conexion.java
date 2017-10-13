@@ -49,7 +49,19 @@ JOptionPane.showMessageDialog(null, "error de conexion "+e.getMessage());
 return Conn;
 
 }
-
+    public static ResultSet getTabla(String Consulta) {
+        Connection conn=getConnection();
+        Statement st;
+        ResultSet datos=null;
+        try{
+            st=conn.createStatement();
+            datos=st.executeQuery(Consulta);
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return datos;
+    }
  
 
 }
