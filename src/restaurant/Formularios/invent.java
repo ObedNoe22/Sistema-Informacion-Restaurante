@@ -176,7 +176,7 @@ public class invent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-       formprovn pn=new formprovn();
+       formprod pn=new formprod();
        pn.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 

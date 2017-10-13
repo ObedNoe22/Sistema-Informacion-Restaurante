@@ -6,6 +6,7 @@
 package restaurant.Pantallas;
 
 import java.awt.Dimension;
+import restaurant.Formularios.formprod;
 import restaurant.Formularios.formprovn;
 import restaurant.Formularios.invent;
 
