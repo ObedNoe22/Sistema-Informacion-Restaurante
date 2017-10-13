@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restaurant;
+package restaurant.Pantallas;
 
 import java.awt.Dimension;
+import restaurant.Formularios.formprovn;
+import restaurant.Formularios.invent;
 
 /**
  *

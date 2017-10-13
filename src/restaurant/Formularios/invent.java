@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restaurant;
+package restaurant.Formularios;
+
+import conexion.conexion;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -16,6 +21,13 @@ public class invent extends javax.swing.JFrame {
      */
     public invent() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        Connection conn;
+
+        Statement st= null;
+
+        ResultSet rs= null;
+        conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
     }
 
     /**
@@ -86,6 +98,11 @@ public class invent extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton9.setText("Nuevo");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Eliminar");
 
@@ -124,7 +141,7 @@ public class invent extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton11)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12)
                 .addContainerGap())
@@ -143,7 +160,7 @@ public class invent extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 481, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -157,6 +174,11 @@ public class invent extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+       formprovn pn=new formprovn();
+       pn.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
