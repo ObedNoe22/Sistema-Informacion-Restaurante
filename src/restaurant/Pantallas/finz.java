@@ -19,6 +19,7 @@ public class finz extends javax.swing.JFrame {
      * Creates new form finz
      */
     public finz() {
+        this.setTitle("Finanzas");
         initComponents();
         cargar();
     }

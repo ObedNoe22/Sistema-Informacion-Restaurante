@@ -15,7 +15,7 @@ public class Cocina extends javax.swing.JFrame {
      * Creates new form Cocina
      */
     public Cocina() {
-        
+        this.setTitle("Cocina");
         initComponents();
         this.setLocationRelativeTo(null);
     }

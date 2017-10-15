@@ -25,7 +25,7 @@ DefaultTableModel modeloTabla;
      * Creates new form Almacen
      */
     public Almacen() {
-        
+        this.setTitle("Almacen");
         initComponents();
         this.setSize(new Dimension(570, 600));
         this.setLocationRelativeTo(null);

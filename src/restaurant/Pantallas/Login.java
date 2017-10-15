@@ -18,7 +18,7 @@ private SimpleDateFormat f;
      * Creates new form Login
      */
     public Login() {
-        
+        this.setTitle("Login");
         initComponents();
         f = new SimpleDateFormat("dd-MM-yyyy"); //FECHA
         jLabel4.setText(f.format(new Date()));//depende de donde se quiera visualizar
