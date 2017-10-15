@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import restaurant.Formularios.formprod;
+import restaurant.Formularios.tablas.emple;
 
 /**
  *
@@ -163,26 +164,25 @@ private SimpleDateFormat f;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String intr,ps,tpu;
+        String intr,ps,tpu,nombre;
         intr =jPasswordField1.getText();
-        
-        
         Connection conn;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
         ResultSet rs;
         String sql="SELECT * FROM empleados";
         try {
             Statement sqls=conn.prepareStatement(sql);
-            rs=sqls.executeQuery(sql);
-            
+            rs=sqls.executeQuery(sql);  
             while(rs.next()){
                 ps=rs.getString("contraseña");
                 tpu=rs.getString("puesto");
+                nombre=rs.getString("nombre");
                 if(intr.equals(ps)){
                     if(tpu.equals("1")){
                         Meseros me=new Meseros();
                         me.setVisible(true);
                         this.setVisible(false);
+                        me.jLabel2.setText(nombre);
                     }
                     else if(tpu.equals("2")){
                         Cocina coc=new Cocina();
@@ -198,16 +198,27 @@ private SimpleDateFormat f;
                         Almacen alm=new Almacen();
                         alm.setVisible(true);
                         this.setVisible(false);
+                        
+                    }
+                    else if(tpu.equals("0")){
+                        emple em=new emple();
+                        em.setVisible(true);
+                        this.setVisible(false);
+                        
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(rootPane,"Contraseña erronea","Error", JOptionPane.ERROR_MESSAGE);
+                     
                 }
                 
             }
         } catch (SQLException ex) {
             Logger.getLogger(formprod.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            JOptionPane.showMessageDialog(rootPane,"Contraseña erronea","Error", JOptionPane.ERROR_MESSAGE);
+        } 
+        
+        
+        
         
                 
     }//GEN-LAST:event_jButton1ActionPerformed

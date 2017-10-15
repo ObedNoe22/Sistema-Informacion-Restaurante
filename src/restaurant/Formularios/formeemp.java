@@ -22,6 +22,7 @@ public class formeemp extends javax.swing.JFrame {
     public formeemp() {
         initComponents();
         this.setTitle("Agregar empleado");
+        this.setLocationRelativeTo(null);
     }
 
     /**
