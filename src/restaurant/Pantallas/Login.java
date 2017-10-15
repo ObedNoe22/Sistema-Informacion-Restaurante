@@ -169,7 +169,7 @@ private SimpleDateFormat f;
         Connection conn;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
         ResultSet rs;
-        String sql="SELECT * FROM empleados";
+        String sql="SELECT * FROM empleados ";
         try {
             Statement sqls=conn.prepareStatement(sql);
             rs=sqls.executeQuery(sql);  
@@ -211,11 +211,12 @@ private SimpleDateFormat f;
                      
                 }
                 
-            }
+            } 
+            
         } catch (SQLException ex) {
             Logger.getLogger(formprod.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(rootPane,"Contraseña erronea","Error", JOptionPane.ERROR_MESSAGE);
         } 
+        
         
         
         

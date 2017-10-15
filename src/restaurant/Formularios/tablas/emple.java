@@ -5,6 +5,12 @@
  */
 package restaurant.Formularios.tablas;
 
+import conexion.conexion;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import restaurant.Formularios.formeemp;
 import restaurant.Pantallas.Login;
 
@@ -13,13 +19,15 @@ import restaurant.Pantallas.Login;
  * @author Obed Martinez
  */
 public class emple extends javax.swing.JFrame {
-
+DefaultTableModel modeloTabla;
     /**
      * Creates new form emple
      */
     public emple() {
         initComponents();
         this.setLocationRelativeTo(null);
+        tabla();
+        
     }
 
     /**
@@ -34,6 +42,9 @@ public class emple extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,25 +62,53 @@ public class emple extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton3.setText("Buscar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(582, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addContainerGap())
+                    .addComponent(jButton3)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -77,11 +116,15 @@ public class emple extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,6 +141,36 @@ public class emple extends javax.swing.JFrame {
         lo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         Connection conn;
+        conn = conexion.getConnection();
+        int valor =Integer.parseInt( JOptionPane.showInputDialog(this,"Introduce el numero de empleado "));
+
+        String mostrar="SELECT * FROM empleados WHERE no_de_empleado = "+valor+"";  
+        String [] Titulos={"No_empleado","Nombre","CURP","Edad","Referencias","Puesto","Sueldo","Contraseña"};
+        String []Datos= new String [8];
+        modeloTabla= new DefaultTableModel (null,Titulos);
+        try {
+            Statement sqls=conn.prepareStatement(mostrar);
+            ResultSet rs = sqls.executeQuery(mostrar);
+            while(rs.next())
+            {
+                Datos[0]= rs.getString("no_de_empleado");
+                Datos[1]= rs.getString("nombre");
+                Datos[2]= rs.getString("curp");
+                Datos[3]= rs.getString("edad");
+                Datos[4]= rs.getString("referencias");
+                Datos[5]= rs.getString("puesto");
+                Datos[6]= rs.getString("sueldo");
+                Datos[7]= rs.getString("contraseña");
+                modeloTabla.addRow(Datos);
+            }
+            jTable1.setModel(modeloTabla);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +210,23 @@ public class emple extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void tabla() {
+        DefaultTableModel modelotabla=new DefaultTableModel();
+        ResultSet rs=conexion.getTabla("SELECT * FROM empleados");
+        modelotabla.setColumnIdentifiers(new Object[]{"No_empleado","Nombre","CURP","Edad","Referencias","Puesto","Sueldo","Contraseña"});
+        try{
+            while(rs.next()){
+                modelotabla.addRow(new Object[]{rs.getString("no_de_empleado"),rs.getString("nombre"),rs.getString("curp"),rs.getString("edad"),rs.getString("referencias"),rs.getString("puesto"),rs.getString("sueldo"),rs.getString("contraseña")});
+            }
+            jTable1.setModel(modelotabla);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }
