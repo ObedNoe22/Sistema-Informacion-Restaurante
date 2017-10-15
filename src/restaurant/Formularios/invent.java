@@ -30,6 +30,7 @@ public class invent extends javax.swing.JFrame {
     
     public invent() {
         initComponents();
+        this.setTitle("Proveedores");
         this.setLocationRelativeTo(null);
         Connection conn;
 

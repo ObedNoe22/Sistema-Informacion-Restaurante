@@ -34,7 +34,7 @@ public class formprod extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         Connection conn;
-
+this.setTitle("Agregar producto");
         Statement st= null;
 
         ResultSet rs= null;

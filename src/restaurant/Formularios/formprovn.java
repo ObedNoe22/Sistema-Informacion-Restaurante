@@ -28,6 +28,7 @@ public class formprovn extends javax.swing.JFrame {
      */
     public formprovn() {
         initComponents();
+        this.setTitle("Nuevo proveedor");
         this.setLocationRelativeTo(null);
         Connection conn;
 
