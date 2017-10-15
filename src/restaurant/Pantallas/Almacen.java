@@ -366,10 +366,10 @@ DefaultTableModel modeloTabla;
     private void mostrar() {
         DefaultTableModel modelotabla=new DefaultTableModel();
         ResultSet rs=conexion.getTabla("SELECT * FROM provedores");
-        modelotabla.setColumnIdentifiers(new Object[]{"No.Proveedor","Empresa","Nombre Proveedor","Direccion","Fecha entrega","Fecha Pedido","Producto","Cantidad","Precio/u","Total"});
+        modelotabla.setColumnIdentifiers(new Object[]{"No.Proveedor","Empresa","Nombre Proveedor","Direccion","Fecha entrega","Fecha Pedido"});
         try{
             while(rs.next()){
-                modelotabla.addRow(new Object[]{rs.getString("No_provedor"),rs.getString("Empresa"),rs.getString("Nombreprov"),rs.getString("Direccion"),rs.getString("Fecha_entr"),rs.getString("Fecha_ped"),rs.getString("Producto"),rs.getString("Cantidad"),rs.getString("Precio_u"),rs.getString("Total")});
+                modelotabla.addRow(new Object[]{rs.getString("No_provedor"),rs.getString("Empresa"),rs.getString("Nombreprov"),rs.getString("Direccion"),rs.getString("Fecha_entr"),rs.getString("Fecha_ped")});
             }
             jTable1.setModel(modelotabla);
         }catch(Exception e){

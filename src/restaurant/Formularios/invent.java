@@ -53,10 +53,11 @@ public class invent extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,13 +71,6 @@ public class invent extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(jTable2);
-
-        jButton9.setText("Nuevo");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
 
         jButton10.setText("Eliminar");
 
@@ -94,6 +88,15 @@ public class invent extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Agregar");
+
+        jButton2.setText("Nuevo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -102,11 +105,13 @@ public class invent extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton10)
                     .addComponent(jButton12)
                     .addComponent(jButton11)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,11 +119,13 @@ public class invent extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
+                        .addGap(11, 11, 11)
                         .addComponent(jButton10)
                         .addGap(18, 18, 18)
                         .addComponent(jButton11)
+                        .addGap(93, 93, 93)
+                        .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -130,7 +137,7 @@ public class invent extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 888, Short.MAX_VALUE)
+            .addGap(0, 910, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -155,19 +162,14 @@ public class invent extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-       formprod pn=new formprod();
-       pn.setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         Connection conn;
         conn = conexion.getConnection();
         int valor =Integer.parseInt( JOptionPane.showInputDialog(this,"Introduce el numero de producto a buscar "));
 
         String mostrar="SELECT * FROM productos WHERE no_producto = "+valor+"";  
-        String [] Titulos={"No.Producto","Producto","Cantidad","Caducidad","Empresa Vendedora","Nombre del vendedor"};
-        String []Datos= new String [6];
+        String [] Titulos={"No.Producto","No.Proveedor","Producto","Cantidad","Caducidad","Descripcion","Tipo de medida","Precio/u","Total"};
+        String []Datos= new String [9];
         modeloTabla= new DefaultTableModel (null,Titulos);
         try {
             Statement sqls=conn.prepareStatement(mostrar);
@@ -175,11 +177,14 @@ public class invent extends javax.swing.JFrame {
             while(rs.next())
             {
                 Datos[0]= rs.getString("no_producto");
-                Datos[1]= rs.getString("producto");
-                Datos[2]= rs.getString("cantidad");
-                Datos[3]= rs.getString("caducidad");
-                Datos[4]= rs.getString("empresaven");
-                Datos[5]= rs.getString("nombrev");
+                Datos[1]= rs.getString("No_provedor");
+                Datos[2]= rs.getString("Producto");
+                Datos[3]= rs.getString("Cantidad");
+                Datos[4]= rs.getString("Caducidad");
+                Datos[5]= rs.getString("Descripcion");
+                Datos[6]= rs.getString("tipocant");
+                Datos[7]= rs.getString("preciou");
+                Datos[8]= rs.getString("total");
                 modeloTabla.addRow(Datos);
             }
             jTable2.setModel(modeloTabla);
@@ -187,6 +192,11 @@ public class invent extends javax.swing.JFrame {
             System.out.print(e.getMessage());
         }
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        formprod f=new formprod();
+        f.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,10 +234,11 @@ public class invent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
@@ -236,10 +247,10 @@ public class invent extends javax.swing.JFrame {
     private void mostrar() {
         DefaultTableModel modelotabla=new DefaultTableModel();
         ResultSet rs=conexion.getTabla("SELECT * FROM productos");
-        modelotabla.setColumnIdentifiers(new Object[]{"No.Producto","Producto","Cantidad","Caducidad","Empresa Vendedora","Nombre del vendedor"});
+        modelotabla.setColumnIdentifiers(new Object[]{"No.Producto","No.Proveedor","Producto","Cantidad","Caducidad","Descripcion","Tipo de medida","Precio/u","Total"});
         try{
             while(rs.next()){
-                modelotabla.addRow(new Object[]{rs.getString("no_producto"),rs.getString("producto"),rs.getString("cantidad"),rs.getString("caducidad"),rs.getString("empresaven"),rs.getString("nombrev")});
+                modelotabla.addRow(new Object[]{rs.getString("no_producto"),rs.getString("No_provedor"),rs.getString("Producto"),rs.getString("Cantidad"),rs.getString("Caducidad"),rs.getString("Descripcion"),rs.getString("tipocant"),rs.getString("preciou"),rs.getString("total")});
             }
             jTable2.setModel(modelotabla);
         }catch(Exception e){
