@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import restaurant.Formularios.formprovn;
-import restaurant.Formularios.invent;
+import restaurant.Formularios.tablas.invent;
 import conexion.conexion;
 import javax.swing.JOptionPane;
 import java.sql.*;

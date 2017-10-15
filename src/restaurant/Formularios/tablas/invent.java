@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restaurant.Formularios;
+package restaurant.Formularios.tablas;
 
 import conexion.conexion;
 import java.sql.Connection;
@@ -14,6 +14,7 @@ import java.sql.*;
 import java.util.logging.*;
 import conexion.conexion;
 import javax.swing.JOptionPane;
+import restaurant.Formularios.formprod;
 
 /**
  *
