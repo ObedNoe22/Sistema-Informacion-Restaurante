@@ -5,8 +5,17 @@
  */
 package restaurant.Pantallas;
 
+import conexion.conexion;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import restaurant.Formularios.formprod;
 
 /**
  *
@@ -154,10 +163,52 @@ private SimpleDateFormat f;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Reserv reserva=new Reserv();
-        reserva.setVisible(true);
-        this.setVisible(false);
+        String intr,ps,tpu;
+        intr =jPasswordField1.getText();
+        
+        
+        Connection conn;
+        conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
+        ResultSet rs;
+        String sql="SELECT * FROM empleados";
+        try {
+            Statement sqls=conn.prepareStatement(sql);
+            rs=sqls.executeQuery(sql);
+            
+            while(rs.next()){
+                ps=rs.getString("contraseña");
+                tpu=rs.getString("puesto");
+                if(intr.equals(ps)){
+                    if(tpu.equals("1")){
+                        Meseros me=new Meseros();
+                        me.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    else if(tpu.equals("2")){
+                        Cocina coc=new Cocina();
+                        coc.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    else if(tpu.equals("3")){
+                        Finanzas fi=new Finanzas();
+                        fi.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    else if(tpu.equals("4")){
+                        Almacen alm=new Almacen();
+                        alm.setVisible(true);
+                        this.setVisible(false);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(rootPane,"Contraseña erronea","Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(formprod.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
                 
     }//GEN-LAST:event_jButton1ActionPerformed
 
