@@ -201,26 +201,29 @@ public class formeemp extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nomb,curp,ref,puesto,contr;
-        int edad;
+        int edad,puest;
         double sueld;
         nomb=jTextField1.getText();
         curp=jTextField2.getText();
         edad=Integer.parseInt(jTextField3.getText());
-        ref=jTextArea1.getText();
-        puesto=(String) jComboBox1.getSelectedItem();
+        ref=jTextArea1.getText();                                     
         sueld=Double.parseDouble(jTextField4.getText());
         contr=jTextField5.getText();
         Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
         String sql="INSERT INTO empleados(no_de_empleado,nombre,curp,edad,referencias,puesto,sueldo,contraseña) VALUES (?,?,?,?,?,?,?,?)";
-        try{
+        puesto=(String) jComboBox1.getSelectedItem();
+        if(puesto=="Mesero"){
+            puest=1;
+            try{
             PreparedStatement pst  = conn.prepareStatement(sql);
             pst.setString(1, null);
             pst.setString(2, nomb);
             pst.setString(3, curp);
-            pst.setString(4, ref);
-            pst.setString(5, puesto);
-            pst.setDouble(6, sueld);
-            pst.setString(7, contr);
+            pst.setInt(4, edad);
+            pst.setString(5, ref);
+            pst.setInt(6, puest);
+            pst.setDouble(7, sueld);
+            pst.setString(8, contr);
             
             int n=pst.executeUpdate();
             if(n>0){
@@ -231,11 +234,104 @@ public class formeemp extends javax.swing.JFrame {
             jTextField4.setText("");
             jComboBox1.setSelectedIndex(0);              //Se vacian al registrar
             jTextArea1.setText("");
+            jTextField5.setText("");
         }
         }
             catch(Exception e){
             JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
         }
+        }
+        else if(puesto=="Cajero"){
+            puest=2;
+            try{
+            PreparedStatement pst  = conn.prepareStatement(sql);
+            pst.setString(1, null);
+            pst.setString(2, nomb);
+            pst.setString(3, curp);
+            pst.setInt(4, edad);
+            pst.setString(5, ref);
+            pst.setInt(6, puest);
+            pst.setDouble(7, sueld);
+            pst.setString(8, contr);
+            
+            int n=pst.executeUpdate();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "Empleado registrado");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jComboBox1.setSelectedIndex(0);              //Se vacian al registrar
+            jTextArea1.setText("");
+            jTextField5.setText("");
+        }
+        }
+            catch(Exception e){
+            JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
+        }
+        }
+        else if(puesto=="Finanzas"){
+            puest=3;
+            try{
+            PreparedStatement pst  = conn.prepareStatement(sql);
+            pst.setString(1, null);
+            pst.setString(2, nomb);
+            pst.setString(3, curp);
+            pst.setInt(4, edad);
+            pst.setString(5, ref);
+            pst.setInt(6, puest);
+            pst.setDouble(7, sueld);
+            pst.setString(8, contr);
+            
+            int n=pst.executeUpdate();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "Empleado registrado");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jComboBox1.setSelectedIndex(0);              //Se vacian al registrar
+            jTextArea1.setText("");
+            jTextField5.setText("");
+        }
+        }
+            catch(Exception e){
+            JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
+        }
+        }
+        else if(puesto=="Almacen"){
+            puest=4;
+            try{
+            PreparedStatement pst  = conn.prepareStatement(sql);
+            pst.setString(1, null);
+            pst.setString(2, nomb);
+            pst.setString(3, curp);
+            pst.setInt(4, edad);
+            pst.setString(5, ref);
+            pst.setInt(6, puest);
+            pst.setDouble(7, sueld);
+            pst.setString(8, contr);
+            
+            int n=pst.executeUpdate();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "Empleado registrado");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jComboBox1.setSelectedIndex(0);              //Se vacian al registrar
+            jTextArea1.setText("");
+            jTextField5.setText("");
+        }
+        }
+            catch(Exception e){
+            JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane,"Puesto invalido","Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
