@@ -6,6 +6,7 @@
 package restaurant.Pantallas;
 
 import conexion.conexion;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import restaurant.Formularios.formprod;
 import restaurant.Formularios.tablas.emple;
@@ -33,6 +35,9 @@ private SimpleDateFormat f;
         f = new SimpleDateFormat("dd-MM-yyyy"); //FECHA
         jLabel4.setText(f.format(new Date()));//depende de donde se quiera visualizar
         this.setLocationRelativeTo(null);
+        URL url= getClass().getResource("/Imagenes/logo.png");
+        ImageIcon img= new ImageIcon(url);
+        setIconImage(img.getImage());
     }
 
     /**

@@ -6,7 +6,9 @@
 package restaurant.Formularios.tablas;
 
 import conexion.conexion;
+import java.net.URL;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,7 +23,11 @@ public class finz extends javax.swing.JFrame {
     public finz() {
         this.setTitle("Finanzas");
         initComponents();
+        this.setLocationRelativeTo(null);
         cargar();
+        URL url= getClass().getResource("/Imagenes/logo.png");
+        ImageIcon img= new ImageIcon(url);
+        setIconImage(img.getImage());
     }
 
     /**

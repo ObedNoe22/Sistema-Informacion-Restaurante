@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.logging.*;
 import conexion.conexion;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import restaurant.Formularios.formprod;
 
@@ -40,6 +42,9 @@ public class invent extends javax.swing.JFrame {
         ResultSet rs= null;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos. 
         mostrar();
+        URL url= getClass().getResource("/Imagenes/logo.png");
+        ImageIcon img= new ImageIcon(url);
+        setIconImage(img.getImage());
     }
     
 

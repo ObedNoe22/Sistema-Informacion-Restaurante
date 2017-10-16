@@ -12,11 +12,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import conexion.conexion;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Obed Martinez
@@ -36,6 +38,9 @@ public class formprovn extends javax.swing.JFrame {
 
         ResultSet rs= null;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
+        URL url= getClass().getResource("/Imagenes/logo.png");
+        ImageIcon img= new ImageIcon(url);
+        setIconImage(img.getImage());
     }
 
     /**

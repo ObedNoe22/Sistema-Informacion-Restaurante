@@ -6,6 +6,7 @@
 package restaurant.Formularios;
 
 import conexion.conexion;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,7 +41,9 @@ this.setTitle("Agregar producto");
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos. 
         jComboBox1.addItem("Selecciona el ID del proveedor");
         dameusuario();
-        
+        URL url= getClass().getResource("/Imagenes/logo.png");
+        ImageIcon img= new ImageIcon(url);
+        setIconImage(img.getImage());
     }
     
     

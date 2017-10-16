@@ -6,9 +6,11 @@
 package restaurant.Formularios.tablas;
 
 import conexion.conexion;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import restaurant.Formularios.formeemp;
@@ -24,9 +26,13 @@ DefaultTableModel modeloTabla;
      * Creates new form emple
      */
     public emple() {
+        setTitle("Empleados");
         initComponents();
         this.setLocationRelativeTo(null);
         tabla();
+        URL url= getClass().getResource("/Imagenes/logo.png");
+        ImageIcon img= new ImageIcon(url);
+        setIconImage(img.getImage());
         
     }
 
