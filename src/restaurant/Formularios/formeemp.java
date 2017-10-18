@@ -218,16 +218,15 @@ public class formeemp extends javax.swing.JFrame {
         Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
         String sql="INSERT INTO empleados(no_de_empleado,nombre,curp,edad,referencias,puesto,sueldo,contraseña) VALUES (?,?,?,?,?,?,?,?)";
         puesto=(String) jComboBox1.getSelectedItem();
-        if(puesto=="Mesero"){
-            puest=1;
-            try{
+        if (puesto!="Selecciona un puesto"){
+        try{
             PreparedStatement pst  = conn.prepareStatement(sql);
             pst.setString(1, null);
             pst.setString(2, nomb);
             pst.setString(3, curp);
             pst.setInt(4, edad);
             pst.setString(5, ref);
-            pst.setInt(6, puest);
+            pst.setString(6, puesto);
             pst.setDouble(7, sueld);
             pst.setString(8, contr);
             
@@ -245,98 +244,12 @@ public class formeemp extends javax.swing.JFrame {
         }
             catch(Exception e){
             JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
+        }    
+        }else{
+            JOptionPane.showMessageDialog(null,"Puesto erroneo","Error",JOptionPane.WARNING_MESSAGE);
         }
-        }
-        else if(puesto=="Cajero"){
-            puest=2;
-            try{
-            PreparedStatement pst  = conn.prepareStatement(sql);
-            pst.setString(1, null);
-            pst.setString(2, nomb);
-            pst.setString(3, curp);
-            pst.setInt(4, edad);
-            pst.setString(5, ref);
-            pst.setInt(6, puest);
-            pst.setDouble(7, sueld);
-            pst.setString(8, contr);
             
-            int n=pst.executeUpdate();
-            if(n>0){
-            JOptionPane.showMessageDialog(this, "Empleado registrado");
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jComboBox1.setSelectedIndex(0);              //Se vacian al registrar
-            jTextArea1.setText("");
-            jTextField5.setText("");
-        }
-        }
-            catch(Exception e){
-            JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
-        }
-        }
-        else if(puesto=="Finanzas"){
-            puest=3;
-            try{
-            PreparedStatement pst  = conn.prepareStatement(sql);
-            pst.setString(1, null);
-            pst.setString(2, nomb);
-            pst.setString(3, curp);
-            pst.setInt(4, edad);
-            pst.setString(5, ref);
-            pst.setInt(6, puest);
-            pst.setDouble(7, sueld);
-            pst.setString(8, contr);
-            
-            int n=pst.executeUpdate();
-            if(n>0){
-            JOptionPane.showMessageDialog(this, "Empleado registrado");
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jComboBox1.setSelectedIndex(0);              //Se vacian al registrar
-            jTextArea1.setText("");
-            jTextField5.setText("");
-        }
-        }
-            catch(Exception e){
-            JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
-        }
-        }
-        else if(puesto=="Almacen"){
-            puest=4;
-            try{
-            PreparedStatement pst  = conn.prepareStatement(sql);
-            pst.setString(1, null);
-            pst.setString(2, nomb);
-            pst.setString(3, curp);
-            pst.setInt(4, edad);
-            pst.setString(5, ref);
-            pst.setInt(6, puest);
-            pst.setDouble(7, sueld);
-            pst.setString(8, contr);
-            
-            int n=pst.executeUpdate();
-            if(n>0){
-            JOptionPane.showMessageDialog(this, "Empleado registrado");
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jComboBox1.setSelectedIndex(0);              //Se vacian al registrar
-            jTextArea1.setText("");
-            jTextField5.setText("");
-        }
-        }
-            catch(Exception e){
-            JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());
-        }
-        }
-        else{
-            JOptionPane.showMessageDialog(rootPane,"Puesto invalido","Error", JOptionPane.ERROR_MESSAGE);
-        }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

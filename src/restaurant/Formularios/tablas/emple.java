@@ -146,9 +146,7 @@ DefaultTableModel modeloTabla;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +236,7 @@ DefaultTableModel modeloTabla;
         String result= null;
         Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
 
-        String sql= "UPDATE `empleados` SET `nombre`='"+nom+"',`curp`='"+curp+"',`edad`="+edad+",`referencias`='"+ref+"',`puesto`="+puest+",`sueldo`="+sueld+",`contraseña`='"+contr+"' WHERE no_de_empleado="+id+"";
+        String sql= "UPDATE `empleados` SET `nombre`='"+nom+"',`curp`='"+curp+"',`edad`="+edad+",`referencias`='"+ref+"',`puesto`='"+puest+"',`sueldo`="+sueld+",`contraseña`='"+contr+"' WHERE no_de_empleado="+id+"";
         try {
             Connection cn= conexion.getConnection();
             PreparedStatement ps= cn.prepareStatement(sql);

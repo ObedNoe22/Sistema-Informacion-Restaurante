@@ -36,9 +36,7 @@ public class invent extends javax.swing.JFrame {
         this.setTitle("Proveedores");
         this.setLocationRelativeTo(null);
         Connection conn;
-
         Statement st= null;
-
         ResultSet rs= null;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos. 
         mostrar();

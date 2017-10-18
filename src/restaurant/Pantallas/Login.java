@@ -183,29 +183,29 @@ private SimpleDateFormat f;
                 tpu=rs.getString("puesto");
                 nombre=rs.getString("nombre");
                 if(intr.equals(ps)){
-                    if(tpu.equals("1")){
+                    if(tpu.equals("Mesero")){
                         Meseros me=new Meseros();
                         me.setVisible(true);
                         this.setVisible(false);
                         me.jLabel2.setText(nombre);
                     }
-                    else if(tpu.equals("2")){
+                    else if(tpu.equals("Cajero")){
                         Cocina coc=new Cocina();
                         coc.setVisible(true);
                         this.setVisible(false);
                     }
-                    else if(tpu.equals("3")){
+                    else if(tpu.equals("Finanzas")){
                         Finanzas fi=new Finanzas();
                         fi.setVisible(true);
                         this.setVisible(false);
                     }
-                    else if(tpu.equals("4")){
+                    else if(tpu.equals("Almacen")){
                         Almacen alm=new Almacen();
                         alm.setVisible(true);
                         this.setVisible(false);
                         
                     }
-                    else if(tpu.equals("0")){
+                    else if(tpu.equals("Admin")){
                         emple em=new emple();
                         em.setVisible(true);
                         this.setVisible(false);
