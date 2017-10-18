@@ -8,6 +8,7 @@ package restaurant.Pantallas;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import restaurant.Formularios.reservaciones;
+import restaurant.Formularios.tablas.asigmes;
 
 /**
  *
@@ -73,6 +74,11 @@ public class Reserv extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(204, 102, 0));
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton4.setText("Asignacion de mesas");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton5.setText("Salir");
@@ -155,6 +161,11 @@ public class Reserv extends javax.swing.JFrame {
         reservaciones res=new reservaciones();
         res.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        asigmes mes=new asigmes();
+        mes.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

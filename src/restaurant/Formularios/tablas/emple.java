@@ -33,8 +33,7 @@ DefaultTableModel modeloTabla;
         tabla();
         URL url= getClass().getResource("/Imagenes/logo.png");
         ImageIcon img= new ImageIcon(url);
-        setIconImage(img.getImage());
-        
+        setIconImage(img.getImage()); 
     }
 
     /**

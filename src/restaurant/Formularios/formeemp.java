@@ -87,7 +87,7 @@ public class formeemp extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un puesto", "Mesero", "Cajero", "Finanzas", "Almacen" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un puesto", "Mesero", "Cajero", "Finanzas", "Almacen", "Cocinero" }));
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +216,7 @@ public class formeemp extends javax.swing.JFrame {
         sueld=Double.parseDouble(jTextField4.getText());
         contr=jTextField5.getText();
         Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
-        String sql="INSERT INTO empleados(no_de_empleado,nombre,curp,edad,referencias,puesto,sueldo,contraseña) VALUES (?,?,?,?,?,?,?,?)";
+        String sql="INSERT INTO empleados(no_de_empleado,nombre,curp,edad,referencias,puesto,sueldo,contraseña,mesas) VALUES (?,?,?,?,?,?,?,?,?)";
         puesto=(String) jComboBox1.getSelectedItem();
         if (puesto!="Selecciona un puesto"){
         try{
@@ -229,7 +229,7 @@ public class formeemp extends javax.swing.JFrame {
             pst.setString(6, puesto);
             pst.setDouble(7, sueld);
             pst.setString(8, contr);
-            
+            pst.setString(9, "");
             int n=pst.executeUpdate();
             if(n>0){
             JOptionPane.showMessageDialog(this, "Empleado registrado");

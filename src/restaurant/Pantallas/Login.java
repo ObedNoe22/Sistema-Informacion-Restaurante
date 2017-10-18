@@ -189,7 +189,7 @@ private SimpleDateFormat f;
                         this.setVisible(false);
                         me.jLabel2.setText(nombre);
                     }
-                    else if(tpu.equals("Cajero")){
+                    else if(tpu.equals("Cocinero")){
                         Cocina coc=new Cocina();
                         coc.setVisible(true);
                         this.setVisible(false);
@@ -210,6 +210,11 @@ private SimpleDateFormat f;
                         em.setVisible(true);
                         this.setVisible(false);
                         
+                    }
+                    else if(tpu.equals("Cajero")){
+                        Reserv re=new Reserv();
+                        re.setVisible(true);
+                        this.setVisible(false);
                     }
                 }
                 else{

@@ -237,7 +237,30 @@ public class invent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        int row = jTable2.getSelectedRow();
+        String id=jTable2.getValueAt(row, 0).toString();
+        String nom=jTable2.getValueAt(row, 2).toString();
+        String cant=jTable2.getValueAt(row, 3).toString();
+        String cad=jTable2.getValueAt(row, 4).toString();
+        String preu=jTable2.getValueAt(row, 7).toString();
+        double a=Double.parseDouble(cant);
+        double b=Double.parseDouble(preu);
+        double c=a*b;
+        String sql="UPDATE productos SET cantidad='"+cant+"',caducidad='"+cad+"',preciou="+preu+",total="+c+" WHERE no_producto='"+id+"'";
+        String result=null;
+        try {
+            Connection cn= conexion.getConnection();
+            PreparedStatement ps= cn.prepareStatement(sql);
+            int n=ps.executeUpdate();
+            cn.close();
+            ps.close();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "Cantidad de productos de "+nom+" ah sido modificado con exito");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            result = e.getMessage();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
