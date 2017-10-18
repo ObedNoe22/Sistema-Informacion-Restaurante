@@ -80,6 +80,11 @@ public class invent extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton10.setText("Eliminar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setText("Buscar");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +100,12 @@ public class invent extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar");
+        jButton1.setText("Agregar producto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Nuevo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +128,7 @@ public class invent extends javax.swing.JFrame {
                     .addComponent(jButton11)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +154,7 @@ public class invent extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
+            .addGap(0, 946, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -204,6 +214,33 @@ public class invent extends javax.swing.JFrame {
         formprod f=new formprod();
         f.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+      int row = jTable2.getSelectedRow();
+        String id=jTable2.getValueAt(row, 0).toString();
+        String result= null;
+        Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
+
+        String sql= "delete from productos where no_producto=?";
+        try {
+            Connection cn= conexion.getConnection();
+            PreparedStatement ps= cn.prepareStatement(sql);
+            ps.setString(1, id);
+            int n=ps.executeUpdate();
+            cn.close();
+            ps.close();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "Producto eliminado");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            result = e.getMessage();
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

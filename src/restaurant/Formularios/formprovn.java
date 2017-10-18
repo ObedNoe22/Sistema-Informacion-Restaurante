@@ -19,6 +19,8 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import restaurant.Pantallas.Almacen;
 /**
  *
  * @author Obed Martinez
@@ -231,17 +233,20 @@ public class formprovn extends javax.swing.JFrame {
             pst.setString(6, f2);      
             int n=pst.executeUpdate();
             if(n>0){
-            JOptionPane.showMessageDialog(this, "Contacto registrado");
+            JOptionPane.showMessageDialog(this, "Proveedor registrado");
             jTextField1.setText("");
             jTextField3.setText("");
             jTextField4.setText("");
             jDateChooser1.setDate(null);
             jDateChooser2.setDate(null);
             }
+            
+            
         }
                 catch (Exception e){
         JOptionPane.showMessageDialog(this, "El error es:"+ e.getMessage());    //nos muestra si existe algun error al momento de insertar o en la conexión de nuestra base de datos.
 }
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -300,4 +305,5 @@ public class formprovn extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
 }

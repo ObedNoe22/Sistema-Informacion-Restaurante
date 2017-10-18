@@ -146,17 +146,7 @@ public class finz extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargar() {
-        DefaultTableModel modelotabla=new DefaultTableModel();
-        ResultSet rs=conexion.getTabla("SELECT * FROM empleados");
-        modelotabla.setColumnIdentifiers(new Object[]{"No. empleado","Nombre", "Puesto","Sueldo", "Contraseña"});
-        try{
-            while(rs.next()){
-                modelotabla.addRow(new Object[]{rs.getString("no_de_empleado"),rs.getString("nombre"),rs.getString("puesto"),rs.getString("sueldo"),rs.getString("contraseña")});
-            }
-            jTable1.setModel(modelotabla);
-        }catch(Exception e){
-            System.out.println(e);
-        }
+        
 
 
     }
