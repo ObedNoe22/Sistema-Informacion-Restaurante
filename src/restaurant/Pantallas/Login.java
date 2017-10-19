@@ -169,7 +169,7 @@ private SimpleDateFormat f;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String intr,ps,tpu,nombre;
+        String intr,ps,tpu,nombre,mesas,sueld,hor;
         intr =jPasswordField1.getText();
         Connection conn;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
@@ -182,12 +182,18 @@ private SimpleDateFormat f;
                 ps=rs.getString("contraseña");
                 tpu=rs.getString("puesto");
                 nombre=rs.getString("nombre");
+                mesas=rs.getString("mesas");
+                sueld=rs.getString("sueldo");
+                hor=rs.getString("horario");
                 if(intr.equals(ps)){
                     if(tpu.equals("Mesero")){
                         Meseros me=new Meseros();
                         me.setVisible(true);
                         this.setVisible(false);
                         me.jLabel2.setText(nombre);
+                        me.jLabel5.setText(mesas);
+                        me.jLabel7.setText(sueld);
+                        me.jLabel9.setText(hor);
                     }
                     else if(tpu.equals("Cocinero")){
                         Cocina coc=new Cocina();

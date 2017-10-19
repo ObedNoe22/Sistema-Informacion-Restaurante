@@ -120,7 +120,8 @@ public class asigmes extends javax.swing.JFrame {
         String id=jTable1.getValueAt(row, 0).toString();
         String nom=jTable1.getValueAt(row, 1).toString();
         String mes=jTable1.getValueAt(row, 2).toString();
-        String sql="UPDATE empleados SET mesas='"+mes+"' WHERE no_de_empleado='"+id+"'";
+        String hor=jTable1.getValueAt(row, 3).toString();
+        String sql="UPDATE empleados SET mesas='"+mes+"',horario='"+hor+"' WHERE no_de_empleado='"+id+"'";
         String result=null;
         try {
             Connection cn= conexion.getConnection();
@@ -129,7 +130,7 @@ public class asigmes extends javax.swing.JFrame {
             cn.close();
             ps.close();
             if(n>0){
-            JOptionPane.showMessageDialog(this, "Mesas de: "+nom+" Asignadas");
+            JOptionPane.showMessageDialog(this, "Usuario "+nom+" modificado");
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -187,10 +188,10 @@ public class asigmes extends javax.swing.JFrame {
     private void mostrar() {
         DefaultTableModel modelotabla=new DefaultTableModel();
         ResultSet rs=conexion.getTabla("SELECT * FROM empleados WHERE puesto='Mesero'");
-        modelotabla.setColumnIdentifiers(new Object[]{"No.Empleado","Nombre","Mesas Asignadas"});
+        modelotabla.setColumnIdentifiers(new Object[]{"No.Empleado","Nombre","Mesas Asignadas","Horario"});
         try{
             while(rs.next()){
-                modelotabla.addRow(new Object[]{rs.getString("no_de_empleado"),rs.getString("nombre"),rs.getString("mesas")});
+                modelotabla.addRow(new Object[]{rs.getString("no_de_empleado"),rs.getString("nombre"),rs.getString("mesas"),rs.getString("horario")});
             }
             jTable1.setModel(modelotabla);
         }catch(Exception e){
