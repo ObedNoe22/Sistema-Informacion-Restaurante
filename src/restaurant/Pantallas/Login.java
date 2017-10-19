@@ -8,6 +8,7 @@ package restaurant.Pantallas;
 import conexion.conexion;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,6 +33,8 @@ private SimpleDateFormat f;
     public Login() {
         this.setTitle("Login");
         initComponents();
+
+        
         f = new SimpleDateFormat("dd-MM-yyyy"); //FECHA
         jLabel4.setText(f.format(new Date()));//depende de donde se quiera visualizar
         this.setLocationRelativeTo(null);
@@ -169,24 +172,30 @@ private SimpleDateFormat f;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String intr,ps,tpu,nombre,mesas,sueld,hor;
+        String intr,nombre = null,mesas = null,sueld = null,hor = null,tpu = null,ps = null;
         intr =jPasswordField1.getText();
         Connection conn;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
         ResultSet rs;
-        String sql="SELECT * FROM empleados ";
+        
+        String sql="SELECT * FROM empleados WHERE contraseña='"+intr+"' ";
+            if(jPasswordField1.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Por favor introduce una contraseña","Error",JOptionPane.WARNING_MESSAGE);
+            }else{
         try {
-            Statement sqls=conn.prepareStatement(sql);
-            rs=sqls.executeQuery(sql);  
-            while(rs.next()){
-                ps=rs.getString("contraseña");
-                tpu=rs.getString("puesto");
-                nombre=rs.getString("nombre");
-                mesas=rs.getString("mesas");
-                sueld=rs.getString("sueldo");
-                hor=rs.getString("horario");
+            Statement stmt = conn.createStatement();
+            rs=stmt.executeQuery(sql);
+            rs.beforeFirst();
+            rs.next();
+            tpu = rs.getString(6);
+            ps = rs.getString(8);
+            hor = rs.getString(10);
+            sueld = rs.getString(7);
+            mesas = rs.getString(9);
+            nombre = rs.getString(2); 
                 if(intr.equals(ps)){
-                    if(tpu.equals("Mesero")){
+                switch (tpu) {
+                    case "Mesero":
                         Meseros me=new Meseros();
                         me.setVisible(true);
                         this.setVisible(false);
@@ -194,50 +203,47 @@ private SimpleDateFormat f;
                         me.jLabel5.setText(mesas);
                         me.jLabel7.setText(sueld);
                         me.jLabel9.setText(hor);
-                    }
-                    else if(tpu.equals("Cocinero")){
+                        break;
+                    case "Cocinero":
                         Cocina coc=new Cocina();
                         coc.setVisible(true);
                         this.setVisible(false);
-                    }
-                    else if(tpu.equals("Finanzas")){
+                        break;
+                    case "Finanzas":
                         Finanzas fi=new Finanzas();
                         fi.setVisible(true);
                         this.setVisible(false);
-                    }
-                    else if(tpu.equals("Almacen")){
+                        break;
+                    case "Almacen":
                         Almacen alm=new Almacen();
                         alm.setVisible(true);
                         this.setVisible(false);
-                        
-                    }
-                    else if(tpu.equals("Admin")){
+                        break;
+                    case "Admin":
                         emple em=new emple();
                         em.setVisible(true);
                         this.setVisible(false);
-                        
-                    }
-                    else if(tpu.equals("Cajero")){
+                        break;
+                    case "Cajero":
                         Reserv re=new Reserv();
                         re.setVisible(true);
                         this.setVisible(false);
-                    }
+                        break;
+                    default:
+                        break;
                 }
-                else{
-                     
-                }
+                    }else{
+                    
+                }      
                 
-            } 
-            
+                
         } catch (SQLException ex) {
             Logger.getLogger(formprod.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        
-        
-        
-        
-                
+            JOptionPane.showMessageDialog(null,"Contraseña incorrecta","Error",JOptionPane.WARNING_MESSAGE);
+        }
+         
+
+ } 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

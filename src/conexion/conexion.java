@@ -14,9 +14,8 @@ import javax.swing.JOptionPane;
 
 /**
 
-*
 
-* @author lupita
+* @author ObedNoe22
 
 */
 
@@ -28,7 +27,7 @@ private static final String user="root"; //nombre de usuario
 
 private static final String pass=""; //contraseña de tu MySQL
 
-private static final String url="jdbc:mysql://localhost/restaurante";
+private static final String url="jdbc:mysql://localhost:3306/restaurante";
 
 private static  Connection Conn;
 
