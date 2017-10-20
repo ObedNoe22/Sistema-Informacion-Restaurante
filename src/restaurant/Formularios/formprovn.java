@@ -26,7 +26,7 @@ import restaurant.Pantallas.Almacen;
  * @author Obed Martinez
  */
 public class formprovn extends javax.swing.JFrame {
-
+    DefaultTableModel modeloTabla;
     /**
      * Creates new form formprovn
      */
@@ -70,7 +70,7 @@ public class formprovn extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -305,5 +305,22 @@ public class formprovn extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrar() {
+        DefaultTableModel modelotabla=new DefaultTableModel();
+        ResultSet rs=conexion.getTabla("SELECT * FROM provedores");
+        modelotabla.setColumnIdentifiers(new Object[]{"No.Proveedor","Empresa","Nombre Proveedor","Direccion","Fecha entrega","Fecha Pedido"});
+        try{
+            while(rs.next()){
+                modelotabla.addRow(new Object[]{rs.getString("No_provedor"),rs.getString("Empresa"),rs.getString("Nombreprov"),rs.getString("Direccion"),rs.getString("Fecha_entr"),rs.getString("Fecha_ped")});
+            }
+            Almacen al=new Almacen();
+            al.jTable1.setModel(modelotabla);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+
+    }
 
 }

@@ -78,7 +78,7 @@ this.setTitle("Agregar producto");
         jTextField4 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 51, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));

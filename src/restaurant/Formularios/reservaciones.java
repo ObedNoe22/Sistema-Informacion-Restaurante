@@ -83,7 +83,7 @@ public class reservaciones extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 0));
@@ -171,9 +171,8 @@ public class reservaciones extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)
                         .addComponent(jLabel2))
                     .addContainerGap(524, Short.MAX_VALUE)))
         );
