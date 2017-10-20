@@ -23,14 +23,17 @@ import javax.swing.ImageIcon;
  */
 public class Almacen extends javax.swing.JFrame {
         DefaultTableModel modeloTabla;
+        boolean opc = true;
+        formprovn form=new formprovn();
+        invent in=new invent();
     /**
      * Creates new form Almacen
      */
     public Almacen() {
-        this.setTitle("Almacen");
+        setTitle("Almacen");
         initComponents();
-        this.setSize(new Dimension(570, 600));
-        this.setLocationRelativeTo(null);
+        setSize(new Dimension(570, 610));
+        setLocationRelativeTo(null);
         jPanel2.setVisible(false);
         URL url= getClass().getResource("/Imagenes/logo.png");
         ImageIcon img= new ImageIcon(url);
@@ -290,14 +293,20 @@ public class Almacen extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jPanel2.setVisible(true);
-        this.setSize(new Dimension(1310, 620));
+        this.setSize(new Dimension(1330, 610));
         this.setLocationRelativeTo(null);
         mostrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        formprovn form=new formprovn();
+        if(opc == true){    
         form.setVisible(true);
+            opc=false;
+        }else{
+        form.dispose();
+        opc=true;
+        form.setVisible(true);
+            }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -307,8 +316,15 @@ public class Almacen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        invent in=new invent();
-        in.setVisible(true);
+            
+        if(opc == true){    
+            in.setVisible(true);
+            opc=false;
+        }else{
+            in.dispose();
+            opc=true;
+            in.setVisible(true);
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

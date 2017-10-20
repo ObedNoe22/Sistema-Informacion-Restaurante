@@ -15,7 +15,9 @@ import restaurant.Formularios.tablas.asigmes;
  * @author Obed Martinez
  */
 public class Reserv extends javax.swing.JFrame {
-
+    boolean opc=true;
+    asigmes mes=new asigmes();
+    reservaciones res=new reservaciones();
     /**
      * Creates new form Reserv
      */
@@ -158,13 +160,27 @@ public class Reserv extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        reservaciones res=new reservaciones();
+        if(opc == true){    
         res.setVisible(true);
+            opc=false;
+        }else{
+        res.dispose();
+        opc=true;
+        res.setVisible(true);
+            }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        asigmes mes=new asigmes();
+        if(opc == true){    
         mes.setVisible(true);
+            opc=false;
+        }else{
+        mes.dispose();
+        opc=true;
+        mes.setVisible(true);
+            }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

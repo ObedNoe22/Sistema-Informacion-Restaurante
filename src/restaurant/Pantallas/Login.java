@@ -33,9 +33,7 @@ private SimpleDateFormat f;
     public Login() {
         this.setTitle("Login");
         initComponents();
-
-        
-        f = new SimpleDateFormat("dd-MM-yyyy"); //FECHA
+        f = new SimpleDateFormat("yyyy-MM-dd"); //FECHA
         jLabel4.setText(f.format(new Date()));//depende de donde se quiera visualizar
         this.setLocationRelativeTo(null);
         URL url= getClass().getResource("/Imagenes/logo.png");
