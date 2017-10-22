@@ -17,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class emplefi extends javax.swing.JFrame {
 DefaultTableModel modeloTabla;
-DefaultTableModel modeloTabla2;
     /**
      * Creates new form emplefi
      */
@@ -185,13 +184,13 @@ DefaultTableModel modeloTabla2;
 
     private void total() {
         String a="" ;  
-        int total=0;  
-        int b=0;  
+        double total=0;  
+        double b=0;  
 
         for(int fila =0;fila<jTable1.getRowCount();fila++){  
 
         a=String.valueOf(jTable1.getValueAt(fila, 3));  
-        b= Integer.valueOf(a);  
+        b=Double.valueOf(a);  
         total=total+b;  
         }  
         jLabel2.setText(String.valueOf(total)); 

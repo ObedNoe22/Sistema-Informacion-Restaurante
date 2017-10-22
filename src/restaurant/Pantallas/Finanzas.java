@@ -7,8 +7,9 @@ package restaurant.Pantallas;
 
 import java.net.URL;
 import javax.swing.ImageIcon;
-import restaurant.Formularios.tablas.caja;
+import restaurant.Formularios.caja;
 import restaurant.Formularios.tablas.emplefi;
+import restaurant.Formularios.tablas.ingregr;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Finanzas extends javax.swing.JFrame {
 boolean opc=true;
 emplefi emp=new emplefi();
 caja caj=new caja();
+    ingregr ing=new ingregr();
     /**
      * Creates new form Finanzas
      */
@@ -66,12 +68,17 @@ caja caj=new caja();
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 51, 0));
+        jButton2.setBackground(new java.awt.Color(204, 102, 0));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setText("Ingresos y Egresos");
         jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(153, 51, 0));
+        jButton3.setBackground(new java.awt.Color(204, 102, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setText("Empleados");
         jButton3.setBorder(null);
@@ -174,6 +181,17 @@ caja caj=new caja();
             caj.setVisible(true);
             }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(opc == true){    
+            ing.setVisible(true);
+            opc=false;
+        }else{
+            ing.dispose();
+            opc=true;
+            ing.setVisible(true);
+            }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
