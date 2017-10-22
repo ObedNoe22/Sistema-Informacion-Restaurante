@@ -7,13 +7,17 @@ package restaurant.Pantallas;
 
 import java.net.URL;
 import javax.swing.ImageIcon;
+import restaurant.Formularios.tablas.caja;
+import restaurant.Formularios.tablas.emplefi;
 
 /**
  *
  * @author Obed Martinez
  */
 public class Finanzas extends javax.swing.JFrame {
-
+boolean opc=true;
+emplefi emp=new emplefi();
+caja caj=new caja();
     /**
      * Creates new form Finanzas
      */
@@ -56,6 +60,11 @@ public class Finanzas extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Caja");
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(153, 51, 0));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -66,6 +75,11 @@ public class Finanzas extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setText("Empleados");
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton4.setText("Salir");
@@ -138,6 +152,28 @@ public class Finanzas extends javax.swing.JFrame {
         menu.setVisible(true);  //Pone visible la nueva pantalla
         this.setVisible(false);  //Oculta esta
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(opc == true){    
+            emp.setVisible(true);
+            opc=false;
+        }else{
+            emp.dispose();
+            opc=true;
+            emp.setVisible(true);
+            }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(opc == true){    
+            caj.setVisible(true);
+            opc=false;
+        }else{
+            caj.dispose();
+            opc=true;
+            caj.setVisible(true);
+            }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

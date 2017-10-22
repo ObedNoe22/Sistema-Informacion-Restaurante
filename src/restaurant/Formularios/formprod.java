@@ -258,7 +258,7 @@ this.setTitle("Agregar producto");
         double preu,tot;
         int cant;                           //Declaracion variables
         Date cad;
-        emp=(String) jComboBox1.getSelectedItem();
+        emp= (String) jComboBox1.getSelectedItem();
         prod=jTextField1.getText();
         cant=Integer.parseInt(jTextField2.getText());
         tipp=(String) jComboBox2.getSelectedItem();

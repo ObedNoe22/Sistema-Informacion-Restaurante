@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import javax.swing.JOptionPane;
-import conexion.sqlins;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
