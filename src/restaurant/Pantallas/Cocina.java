@@ -74,6 +74,9 @@ DefaultTableModel modeloTabla;
         });
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
             }
@@ -208,13 +211,16 @@ DefaultTableModel modeloTabla;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-
+            
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultTableModel modelotabla=new DefaultTableModel();
     String intr = jTextField1.getText();
-        ResultSet rs=conexion.getTabla("SELECT * FROM recetas WHERE nombre='"+intr+"'");
+    if(intr.equals("")){
+        tabla();
+    }else{
+        ResultSet rs=conexion.getTabla("SELECT * FROM recetas WHERE nombre LIKE '%"+intr+"%' ");
         modelotabla.setColumnIdentifiers(new Object[]{"Receta"});
         try{
             while(rs.next()){
@@ -224,6 +230,8 @@ DefaultTableModel modeloTabla;
         }catch(Exception e){
             System.out.println(e);
         }
+    }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -260,6 +268,10 @@ DefaultTableModel modeloTabla;
     }catch(Exception e){
         System.err.println(e);}    
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        buscador();
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -323,6 +335,26 @@ DefaultTableModel modeloTabla;
         }
 
 
+
+    }
+
+    private void buscador() {
+        DefaultTableModel modelotabla=new DefaultTableModel();
+    String intr = jTextField1.getText();
+    if(intr.equals("")){
+        tabla();
+    }else{
+        ResultSet rs=conexion.getTabla("SELECT * FROM recetas WHERE nombre LIKE '%"+intr+"%' ");
+        modelotabla.setColumnIdentifiers(new Object[]{"Receta"});
+        try{
+            while(rs.next()){
+                modelotabla.addRow(new Object[]{rs.getString("nombre")});
+            }
+            jTable1.setModel(modelotabla);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
     }
 }
