@@ -87,7 +87,7 @@ public class formeemp extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un puesto", "Mesero", "Cajero", "Finanzas", "Almacen", "Cocinero" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un puesto", "Mesero", "Cajero", "Finanzas", "Almacen", "Cocinero", "Recepcionista" }));
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

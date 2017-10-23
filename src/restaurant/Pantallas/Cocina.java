@@ -19,7 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import restaurant.Formularios.nuevasrecetas;
-import restaurant.Formularios.tablas.mostrec;
+import restaurant.Formularios.mostrec;
 
 /**
  *

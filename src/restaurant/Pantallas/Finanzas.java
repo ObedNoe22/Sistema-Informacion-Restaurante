@@ -7,9 +7,9 @@ package restaurant.Pantallas;
 
 import java.net.URL;
 import javax.swing.ImageIcon;
-import restaurant.Formularios.caja;
-import restaurant.Formularios.tablas.emplefi;
-import restaurant.Formularios.tablas.ingregr;
+import restaurant.Formularios.tablas.cortcaj;
+import restaurant.Formularios.emplefi;
+import restaurant.Formularios.ingregr;
 
 /**
  *
@@ -18,7 +18,7 @@ import restaurant.Formularios.tablas.ingregr;
 public class Finanzas extends javax.swing.JFrame {
 boolean opc=true;
 emplefi emp=new emplefi();
-caja caj=new caja();
+cortcaj caj=new cortcaj();
     ingregr ing=new ingregr();
     /**
      * Creates new form Finanzas

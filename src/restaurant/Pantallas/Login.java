@@ -8,7 +8,6 @@ package restaurant.Pantallas;
 import conexion.conexion;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import restaurant.Formularios.caja;
 import restaurant.Formularios.formprod;
 import restaurant.Formularios.tablas.emple;
 
@@ -223,6 +223,13 @@ private SimpleDateFormat f;
                         this.setVisible(false);
                         break;
                     case "Cajero":
+                        caja caj=new caja();
+                        caj.setVisible(true);
+                        this.setVisible(false);
+                        caj.jLabel12.setText(nombre);
+                        
+                        break;
+                    case "Recepcionista":
                         Reserv re=new Reserv();
                         re.setVisible(true);
                         this.setVisible(false);
