@@ -244,7 +244,7 @@ DefaultTableModel modeloTabla;
     ResultSet rs;
     Connection conn;
         conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
-    String sql = "SELECT * FROM recetas WHERE nombre='"+nomb+"'";
+    String sql = "SELECT * FROM recetas WHERE nombre LIKE '%"+nomb+"%'";
     try {
             Statement stmt = conn.createStatement();
             rs=stmt.executeQuery(sql);

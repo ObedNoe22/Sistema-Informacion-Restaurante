@@ -280,6 +280,7 @@ private FileOutputStream salida;
             jTextArea2.setText("");
             jTextField2.setText("");
             jLabel6.setIcon(null);
+            multiples();
         }
             
         
@@ -344,4 +345,16 @@ private FileOutputStream salida;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private void multiples() {
+        ResultSet rs;
+        String sql="DELETE FROM recetas WHERE imagen = '' ";
+    Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
+    try{
+        Statement stmt = conn.createStatement();
+            stmt.execute(sql);
+    }catch(Exception e){
+        System.err.println(e);
+    }
+    }
 }

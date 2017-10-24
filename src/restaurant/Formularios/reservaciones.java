@@ -42,6 +42,7 @@ public class reservaciones extends javax.swing.JFrame {
         jTextField6.setVisible(false);
         jTextField7.setVisible(false);
         jTextField3.setVisible(false);
+        jLabel5.setVisible(false);
     }
 
     /**
@@ -75,7 +76,6 @@ public class reservaciones extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -86,6 +86,7 @@ public class reservaciones extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 0));
@@ -131,7 +132,7 @@ public class reservaciones extends javax.swing.JFrame {
             }
         });
 
-        jDateChooser1.setDateFormatString("YYYY-MM-dd");
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
 
         jButton2.setText("Costo reservacion");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +163,7 @@ public class reservaciones extends javax.swing.JFrame {
                         .addComponent(jButton9)
                         .addGap(107, 107, 107)
                         .addComponent(jButton4)
-                        .addGap(49, 49, 49))
+                        .addGap(139, 139, 139))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -263,14 +264,6 @@ public class reservaciones extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton8.setText("GUARDAR");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo ph.png"))); // NOI18N
 
         jLabel10.setText("Numero de cuenta");
@@ -285,6 +278,14 @@ public class reservaciones extends javax.swing.JFrame {
 
         jLabel5.setText("yyyy-MM-dd");
 
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton8.setText("GUARDAR");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -294,9 +295,9 @@ public class reservaciones extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8)
+                        .addGap(27, 27, 27)
                         .addComponent(jButton7))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +328,7 @@ public class reservaciones extends javax.swing.JFrame {
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jTextField3))))))
-                        .addGap(0, 54, Short.MAX_VALUE)))
+                        .addGap(0, 90, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -353,19 +354,18 @@ public class reservaciones extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton8)
-                            .addComponent(jButton7))
-                        .addGap(61, 61, 61))
+                            .addComponent(jButton7)
+                            .addComponent(jButton8)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addGap(61, 61, 61))))
+                        .addGap(0, 71, Short.MAX_VALUE)
+                        .addComponent(jLabel9)))
+                .addGap(61, 61, 61))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -373,7 +373,7 @@ public class reservaciones extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -411,6 +411,7 @@ public class reservaciones extends javax.swing.JFrame {
         jTextField6.setVisible(false);
         jTextField7.setVisible(false);
         jTextField3.setVisible(false);
+        jLabel5.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -422,6 +423,7 @@ public class reservaciones extends javax.swing.JFrame {
         jTextField6.setVisible(true);
         jTextField7.setVisible(true);
         jTextField3.setVisible(true);
+        jLabel5.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -437,14 +439,14 @@ public class reservaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        String nom,f1,f2,tarj,ccv,feexp;
-        int np,mes;
+        String nom,f1,f2,tarj,ccv,feexp,mes;
+        int np;
         Date fe;
         double cost;
         nom=jTextField1.getText();
         np=Integer.parseInt(jTextField2.getText());
         cost=Double.parseDouble(jTextField4.getText());
-        mes=Integer.parseInt(jTextField5.getText());
+        mes=jTextField5.getText();
         fe=jDateChooser1.getDate();
         tarj=jTextField6.getText();
         ccv=jTextField7.getText();
@@ -453,14 +455,14 @@ public class reservaciones extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat(formato);
         f1 = String.valueOf(sdf.format(fe));
         Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
-            String sql="INSERT INTO reservaciones(id_res,nomres,nope,fecha,mesas,costo,tarjeta,ccv,fechexp) VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql="INSERT INTO reservaciones(id_res,nombres,nope,fecha,mesas,costo,tarjeta,ccv,fechexp) VALUES (?,?,?,?,?,?,?,?,?)";
             try {
             PreparedStatement pst  = conn.prepareStatement(sql);
             pst.setString(1, null);
             pst.setString(2, nom);
             pst.setInt(3, np);
             pst.setString(4, f1);
-            pst.setInt(5, mes);
+            pst.setString(5, mes);
             pst.setDouble(6, cost);
             pst.setString(7, tarj);
             pst.setString(8, ccv);
@@ -476,6 +478,9 @@ public class reservaciones extends javax.swing.JFrame {
             jTextField7.setText("");
             jDateChooser1.setDate(null);                //Se vacian al registrar
             jTextField3.setText("");
+            jPanel3.setVisible(false);
+        this.setSize(new Dimension(738, 505));
+        this.setLocationRelativeTo(null);
             }
         } catch (Exception e){
 

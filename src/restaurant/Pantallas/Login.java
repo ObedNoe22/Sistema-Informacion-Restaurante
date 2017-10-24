@@ -19,7 +19,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import restaurant.Formularios.caja;
 import restaurant.Formularios.formprod;
-import restaurant.Formularios.tablas.emple;
 
 /**
  *
@@ -62,6 +61,7 @@ private SimpleDateFormat f;
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
 
@@ -218,7 +218,7 @@ private SimpleDateFormat f;
                         this.setVisible(false);
                         break;
                     case "Admin":
-                        emple em=new emple();
+                        Jefe em=new Jefe();
                         em.setVisible(true);
                         this.setVisible(false);
                         break;
