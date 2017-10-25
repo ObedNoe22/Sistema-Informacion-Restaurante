@@ -56,7 +56,7 @@ public class Reserv extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel1.setBackground(new java.awt.Color(204, 102, 0));
 
         jLabel1.setFont(new java.awt.Font("Broadway", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 0, 0));
@@ -98,7 +98,7 @@ public class Reserv extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton5.setText("Salir");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

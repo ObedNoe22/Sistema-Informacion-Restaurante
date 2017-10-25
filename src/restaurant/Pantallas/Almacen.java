@@ -148,6 +148,11 @@ public class Almacen extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton5.setText("Modificar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton6.setText("Eliminar");
@@ -333,8 +338,8 @@ public class Almacen extends javax.swing.JFrame {
         int valor =Integer.parseInt( JOptionPane.showInputDialog(this,"Introduce el numero de proveedor a buscar "));
 
         String mostrar="SELECT * FROM provedores WHERE No_provedor = "+valor+"";  
-        String [] Titulos={"No.Proveedor","Empresa","Nombre Proveedor","Direccion","Fecha entrega","Fecha Pedido","Producto","Cantidad","Precio/u","Total"};
-        String []Datos= new String [10];
+        String [] Titulos={"No.Proveedor","Empresa","Nombre Proveedor","Direccion","Fecha entrega","Fecha Pedido"};
+        String []Datos= new String [6];
         modeloTabla= new DefaultTableModel (null,Titulos);
         try {
             Statement sqls=conn.prepareStatement(mostrar);
@@ -347,11 +352,6 @@ public class Almacen extends javax.swing.JFrame {
                 Datos[3]= rs.getString("Direccion");
                 Datos[4]= rs.getString("Fecha_entr");
                 Datos[5]= rs.getString("Fecha_ped");
-                Datos[6]= rs.getString("Producto");
-                Datos[7]= rs.getString("Cantidad");
-                Datos[8]= rs.getString("Precio_u");
-                Datos[9]= rs.getString("Total");
-
                 modeloTabla.addRow(Datos);
             }
             jTable1.setModel(modeloTabla);
@@ -387,6 +387,31 @@ public class Almacen extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         mostrar();
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int row = jTable1.getSelectedRow();
+        String id=jTable1.getValueAt(row, 0).toString();
+        String emp=jTable1.getValueAt(row, 1).toString();
+        String nom=jTable1.getValueAt(row, 2).toString();
+        String dire=jTable1.getValueAt(row, 3).toString();
+        String fechae=jTable1.getValueAt(row, 4).toString();
+        String fechap=jTable1.getValueAt(row, 5).toString();
+        String sql="UPDATE provedores SET Empresa='"+emp+"',Nombreprov='"+nom+"',Direccion='"+dire+"',Fecha_entr='"+fechae+"',Fecha_ped='"+fechap+"' WHERE No_provedor='"+id+"'";
+        String result=null;
+        try {
+            Connection cn= conexion.getConnection();
+            PreparedStatement ps= cn.prepareStatement(sql);
+            int n=ps.executeUpdate();
+            cn.close();
+            ps.close();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "El proveedor "+nom+" ah sido modificado con exito");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            result = e.getMessage();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

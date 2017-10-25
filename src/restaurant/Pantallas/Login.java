@@ -89,6 +89,7 @@ private SimpleDateFormat f;
         jLabel5.setFont(new java.awt.Font("News701 BT", 2, 24)); // NOI18N
         jLabel5.setText("\"Clarence Food\"");
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
