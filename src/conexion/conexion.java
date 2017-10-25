@@ -11,14 +11,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import javax.swing.JOptionPane;
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import restaurant.Formularios.nuevasrecetas;
 
 /**
 

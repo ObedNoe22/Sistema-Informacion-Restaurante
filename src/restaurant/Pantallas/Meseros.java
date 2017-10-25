@@ -5,15 +5,8 @@
  */
 package restaurant.Pantallas;
 
-import conexion.conexion;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import restaurant.Formularios.formprod;
 
 /**
  *

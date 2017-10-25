@@ -16,8 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import restaurant.Formularios.factura;
-import restaurant.Formularios.formprod;
 import restaurant.Pantallas.Login;
 
 /**

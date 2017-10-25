@@ -5,13 +5,11 @@
  */
 package restaurant.Formularios.tablas;
 
-import conexion.conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
-import java.util.logging.*;
 import conexion.conexion;
 import java.net.URL;
 import javax.swing.ImageIcon;
