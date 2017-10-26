@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import restaurant.Formularios.nuevasrecetas;
 import restaurant.Formularios.mostrec;
+import restaurant.Formularios.tablas.elirec;
 
 /**
  *
@@ -29,6 +30,7 @@ public class Cocina extends javax.swing.JFrame {
 boolean opc=true;
 nuevasrecetas nue=new nuevasrecetas();
 DefaultTableModel modeloTabla;
+elirec el=new elirec();
         TableRowSorter trs;
     /**
      * Creates new form Cocina
@@ -54,8 +56,6 @@ DefaultTableModel modeloTabla;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -63,25 +63,11 @@ DefaultTableModel modeloTabla;
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(204, 102, 0));
 
         jLabel1.setFont(new java.awt.Font("Broadway", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 0, 0));
@@ -123,6 +109,14 @@ DefaultTableModel modeloTabla;
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,11 +127,6 @@ DefaultTableModel modeloTabla;
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jTextField1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(231, 231, 231)
@@ -146,14 +135,16 @@ DefaultTableModel modeloTabla;
                                 .addContainerGap()
                                 .addComponent(jLabel3)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(204, 204, 204)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton2)))))
+                                        .addComponent(jButton2))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(204, 204, 204)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton4)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -162,17 +153,15 @@ DefaultTableModel modeloTabla;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(jButton3)))
@@ -213,30 +202,6 @@ DefaultTableModel modeloTabla;
             }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-            
-    }//GEN-LAST:event_jTextField1KeyTyped
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DefaultTableModel modelotabla=new DefaultTableModel();
-    String intr = jTextField1.getText();
-    if(intr.equals("")){
-        tabla();
-    }else{
-        ResultSet rs=conexion.getTabla("SELECT * FROM recetas WHERE nombre LIKE '%"+intr+"%' ");
-        modelotabla.setColumnIdentifiers(new Object[]{"Receta"});
-        try{
-            while(rs.next()){
-                modelotabla.addRow(new Object[]{rs.getString("nombre")});
-            }
-            jTable1.setModel(modelotabla);
-        }catch(Exception e){
-            System.out.println(e);
-        }
-    }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int seleccion=jTable1.rowAtPoint(evt.getPoint());
         mostrec mos=new mostrec();
@@ -272,9 +237,16 @@ DefaultTableModel modeloTabla;
         System.err.println(e);}    
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        buscador();
-    }//GEN-LAST:event_jTextField1KeyReleased
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+            if(opc == true){    
+            el.setVisible(true);
+            opc=false;
+        }else{
+            el.dispose();
+            opc=true;
+            el.setVisible(true);
+            }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,16 +284,15 @@ DefaultTableModel modeloTabla;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     private void tabla() {
@@ -341,23 +312,5 @@ DefaultTableModel modeloTabla;
 
     }
 
-    private void buscador() {
-        DefaultTableModel modelotabla=new DefaultTableModel();
-    String intr = jTextField1.getText();
-    if(intr.equals("")){
-        tabla();
-    }else{
-        ResultSet rs=conexion.getTabla("SELECT * FROM recetas WHERE nombre LIKE '%"+intr+"%' ");
-        modelotabla.setColumnIdentifiers(new Object[]{"Receta"});
-        try{
-            while(rs.next()){
-                modelotabla.addRow(new Object[]{rs.getString("nombre")});
-            }
-            jTable1.setModel(modelotabla);
-        }catch(Exception e){
-            System.out.println(e);
-        }
-    }
-
-    }
+   
 }
