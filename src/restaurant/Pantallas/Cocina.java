@@ -230,7 +230,8 @@ elirec el=new elirec();
             mos.jLabel6.setText(nombre);
             mos.jTextArea1.setText(ingre);
             mos.jTextArea2.setText(prep);
-            mos.jTextField1.setText(cost);
+            mos.jTextField1.setVisible(false);
+            mos.jLabel4.setVisible(false);
             mos.jLabel7.setIcon(icono);
             mos.setVisible(true);
     }catch(Exception e){
