@@ -6,7 +6,12 @@
 package restaurant.Formularios.tablas;
 
 import conexion.conexion;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +28,10 @@ agenda ag=new agenda();
     public mesason() {
         initComponents();
         mostrar();
+        this.setLocationRelativeTo(null);
+        URL url= getClass().getResource("/Imagenes/logo.png");
+        ImageIcon img= new ImageIcon(url);
+        setIconImage(img.getImage());
     }
 
     /**
@@ -40,9 +49,12 @@ agenda ag=new agenda();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asignar mesas");
+
+        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,6 +90,13 @@ agenda ag=new agenda();
             }
         });
 
+        jButton4.setText("Actualizar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -88,7 +107,8 @@ agenda ag=new agenda();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,6 +118,8 @@ agenda ag=new agenda();
                 .addComponent(jButton1)
                 .addGap(43, 43, 43)
                 .addComponent(jButton3)
+                .addGap(122, 122, 122)
+                .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2))
         );
@@ -132,8 +154,40 @@ agenda ag=new agenda();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        int row = jTable1.getSelectedRow();
+        String id=jTable1.getValueAt(row, 0).toString();
+        String nom=jTable1.getValueAt(row, 1).toString();
+        String tel=jTable1.getValueAt(row, 2).toString();
+        String mail=jTable1.getValueAt(row, 3).toString();
+        String nop=jTable1.getValueAt(row, 4).toString();
+        String fech=jTable1.getValueAt(row, 5).toString();
+        String mesas=jTable1.getValueAt(row, 6).toString();
+        if(mesas.equals("")){
+             JOptionPane.showMessageDialog(null,"Por favor introduce las mesas","Error",JOptionPane.WARNING_MESSAGE);
+        }else{
+            String result= null;
+        Connection conn = conexion.getConnection(); //Para tener conexión a la Base de Datos.
+
+        String sql= "UPDATE reservaciones SET nombres='"+nom+"',tel='"+tel+"',mail='"+mail+"',nope='"+nop+"',fecha='"+fech+"',mesas='"+mesas+"' WHERE id_res="+id+"";
+        try {
+            Connection cn= conexion.getConnection();
+            PreparedStatement ps= cn.prepareStatement(sql);
+            int n=ps.executeUpdate();
+            cn.close();
+            ps.close();
+            if(n>0){
+            JOptionPane.showMessageDialog(this, "Empleado  "+nom+" modificado");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            result = e.getMessage();
+        }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        mostrar();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +228,7 @@ agenda ag=new agenda();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -181,11 +236,11 @@ agenda ag=new agenda();
 
     private void mostrar() {
         DefaultTableModel modelotabla=new DefaultTableModel();
-        ResultSet rs=conexion.getTabla("SELECT * FROM reson");
-        modelotabla.setColumnIdentifiers(new Object[]{"No_reserv","Nombre","Direccion","Telefono","E-Mail","No_Personas","Fecha Res","Mesas"});
+        ResultSet rs=conexion.getTabla("SELECT * FROM reservaciones WHERE mesas='' ");
+        modelotabla.setColumnIdentifiers(new Object[]{"No_reserv","Nombre","Telefono","E-Mail","No_Personas","Fecha Res","Mesas"});
         try{
             while(rs.next()){
-                modelotabla.addRow(new Object[]{rs.getString("no_res"),rs.getString("nom"),rs.getString("direc"),rs.getString("tel"),rs.getString("mail"),rs.getString("pers"),rs.getString("fechar"),rs.getString("mesas")});
+                modelotabla.addRow(new Object[]{rs.getString("id_res"),rs.getString("nombres"),rs.getString("tel"),rs.getString("mail"),rs.getString("nope"),rs.getString("fecha"),rs.getString("mesas")});
             }
             jTable1.setModel(modelotabla);
         }catch(Exception e){

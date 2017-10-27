@@ -51,6 +51,8 @@ public class reservonl extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reservar online");
 
+        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
+
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,23 +129,21 @@ public class reservonl extends javax.swing.JFrame {
         if (valor.equals("")){
             JOptionPane.showMessageDialog(null,"Por favor introduce un nombre","Error",JOptionPane.WARNING_MESSAGE);
         }else{
-            String sql="SELECT * FROM reson WHERE nom LIKE '%"+valor+"%'"; 
+            String sql="SELECT * FROM reservaciones WHERE nombres LIKE '%"+valor+"%'"; 
             try {
             Statement stmt = conn.createStatement();
             rs=stmt.executeQuery(sql);
             rs.beforeFirst();
             rs.next();
             nom = rs.getString(2);
-            direc = rs.getString(3);
-            tel = rs.getString(4);
-            mail = rs.getString(5);
-            pers = rs.getString(6);
-            fech = rs.getString(7);
-            costo = rs.getString(8);
-            mesas = rs.getString(12);
+            tel = rs.getString(10);
+            mail = rs.getString(11);
+            pers = rs.getString(3);
+            fech = rs.getString(4);
+            costo = rs.getString(6);
+            mesas = rs.getString(5);
             res.setVisible(true);
             res.jnom.setText(nom);
-            res.jdirecc.setText(direc);
             res.jtel.setText(tel);
             res.jmail.setText(mail);
             res.jnop.setText(pers);
