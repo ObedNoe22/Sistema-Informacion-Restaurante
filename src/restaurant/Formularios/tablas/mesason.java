@@ -176,7 +176,7 @@ agenda ag=new agenda();
             cn.close();
             ps.close();
             if(n>0){
-            JOptionPane.showMessageDialog(this, "Empleado  "+nom+" modificado");
+            JOptionPane.showMessageDialog(this, "Las mesas de "+nom+" Han sido modificadas");
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
