@@ -5,6 +5,8 @@
  */
 package restaurant.Formularios;
 
+import br.com.adilson.util.Extenso;
+import br.com.adilson.util.PrinterMatrix;
 import conexion.conexion;
 import java.net.URL;
 import java.sql.Connection;
@@ -16,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import restaurant.Pantallas.Login;
 
 /**
@@ -25,6 +28,7 @@ import restaurant.Pantallas.Login;
 public class caja extends javax.swing.JFrame {
 boolean opc=true;
 factura fac=new factura();
+DefaultTableModel modelo = (DefaultTableModel) fac.tblVentas.getModel();
     /**
      * Creates new form caja
      */
@@ -95,7 +99,8 @@ factura fac=new factura();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jved = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tickets");
@@ -270,14 +275,20 @@ factura fac=new factura();
             }
         });
 
+        jLabel11.setText("Vendedor:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(310, 310, 310)
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jved, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
                 .addComponent(jLabel1)
-                .addContainerGap(344, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -285,9 +296,6 @@ factura fac=new factura();
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(75, 75, 75)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, 93, Short.MAX_VALUE)
                                     .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.LEADING, 0, 93, Short.MAX_VALUE)
@@ -295,7 +303,7 @@ factura fac=new factura();
                                     .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, 93, Short.MAX_VALUE)
                                     .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, 93, Short.MAX_VALUE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 93, Short.MAX_VALUE)))
-                            .addGap(1, 1, 1)
+                            .addGap(135, 135, 135)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -331,8 +339,8 @@ factura fac=new factura();
                                     .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -371,13 +379,15 @@ factura fac=new factura();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(jved, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addContainerGap(417, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(36, 36, 36)
+                    .addGap(67, 67, 67)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jLabel3)
@@ -481,6 +491,9 @@ factura fac=new factura();
         n=k+l+m;
             fac.jTextField7.setText(String.valueOf(n));
             opc=false;
+            String nom=jved.getText();
+            fac.jLabel7.setText(nom);
+            tabla();
         }else{
             fac.dispose();
             opc=true;
@@ -1163,7 +1176,7 @@ String nom;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    public javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1186,6 +1199,7 @@ String nom;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    public javax.swing.JLabel jved;
     // End of variables declaration//GEN-END:variables
 
     private void combos() {
@@ -1247,4 +1261,132 @@ String nom;
         }
 
     }
+
+    private void tabla() {
+        
+        if(jButton7.isVisible()==true){
+        Object [] fila1=new Object[3];
+        fila1[0]=jComboBox1.getSelectedItem().toString();
+        fila1[1]=jTextField1.getText();
+        fila1[2]=jTextField2.getText();
+        modelo.addRow(fila1);
+        Object [] fila2=new Object[3];
+        fila2[0]=jComboBox2.getSelectedItem().toString();
+        fila2[1]=jTextField3.getText();
+        fila2[2]=jTextField4.getText();
+        modelo.addRow(fila2);
+        Object [] fila3=new Object[3];
+        fila3[0]=jComboBox3.getSelectedItem().toString();
+        fila3[1]=jTextField5.getText();
+        fila3[2]=jTextField6.getText();
+        modelo.addRow(fila3);
+        Object [] fila4=new Object[3];
+        fila4[0]=jComboBox4.getSelectedItem().toString();
+        fila4[1]=jTextField7.getText();
+        fila4[2]=jTextField8.getText();
+        modelo.addRow(fila4);
+        Object [] fila5=new Object[3];
+        fila5[0]=jComboBox5.getSelectedItem().toString();
+        fila5[1]=jTextField9.getText();
+        fila5[2]=jTextField10.getText();
+        modelo.addRow(fila5);
+        Object [] fila6=new Object[3];
+        fila6[0]=jComboBox6.getSelectedItem().toString();
+        fila6[1]=jTextField11.getText();
+        fila6[2]=jTextField12.getText();
+        modelo.addRow(fila6);
+        fac.tblVentas.setModel(modelo);
+        }
+        else if(jButton6.isVisible()==true){
+        Object [] fila1=new Object[3];
+        fila1[0]=jComboBox1.getSelectedItem().toString();
+        fila1[1]=jTextField1.getText();
+        fila1[2]=jTextField2.getText();
+        modelo.addRow(fila1);
+        Object [] fila2=new Object[3];
+        fila2[0]=jComboBox2.getSelectedItem().toString();
+        fila2[1]=jTextField3.getText();
+        fila2[2]=jTextField4.getText();
+        modelo.addRow(fila2);
+        Object [] fila3=new Object[3];
+        fila3[0]=jComboBox3.getSelectedItem().toString();
+        fila3[1]=jTextField5.getText();
+        fila3[2]=jTextField6.getText();
+        modelo.addRow(fila3);
+        Object [] fila4=new Object[3];
+        fila4[0]=jComboBox4.getSelectedItem().toString();
+        fila4[1]=jTextField7.getText();
+        fila4[2]=jTextField8.getText();
+        modelo.addRow(fila4);
+        Object [] fila5=new Object[3];
+        fila5[0]=jComboBox5.getSelectedItem().toString();
+        fila5[1]=jTextField9.getText();
+        fila5[2]=jTextField10.getText();
+        modelo.addRow(fila5);
+        fac.tblVentas.setModel(modelo);
+        }
+        else if(jButton5.isVisible()==true){
+        Object [] fila1=new Object[3];
+        fila1[0]=jComboBox1.getSelectedItem().toString();
+        fila1[1]=jTextField1.getText();
+        fila1[2]=jTextField2.getText();
+        modelo.addRow(fila1);
+        Object [] fila2=new Object[3];
+        fila2[0]=jComboBox2.getSelectedItem().toString();
+        fila2[1]=jTextField3.getText();
+        fila2[2]=jTextField4.getText();
+        modelo.addRow(fila2);
+        Object [] fila3=new Object[3];
+        fila3[0]=jComboBox3.getSelectedItem().toString();
+        fila3[1]=jTextField5.getText();
+        fila3[2]=jTextField6.getText();
+        modelo.addRow(fila3);
+        Object [] fila4=new Object[3];
+        fila4[0]=jComboBox4.getSelectedItem().toString();
+        fila4[1]=jTextField7.getText();
+        fila4[2]=jTextField8.getText();
+        modelo.addRow(fila4);
+        fac.tblVentas.setModel(modelo);
+        }
+        else if(jButton4.isVisible()==true){
+        Object [] fila1=new Object[3];
+        fila1[0]=jComboBox1.getSelectedItem().toString();
+        fila1[1]=jTextField1.getText();
+        fila1[2]=jTextField2.getText();
+        modelo.addRow(fila1);
+        Object [] fila2=new Object[3];
+        fila2[0]=jComboBox2.getSelectedItem().toString();
+        fila2[1]=jTextField3.getText();
+        fila2[2]=jTextField4.getText();
+        modelo.addRow(fila2);
+        Object [] fila3=new Object[3];
+        fila3[0]=jComboBox3.getSelectedItem().toString();
+        fila3[1]=jTextField5.getText();
+        fila3[2]=jTextField6.getText();
+        modelo.addRow(fila3);
+        fac.tblVentas.setModel(modelo);
+        }
+        else if(jButton3.isVisible()==true){
+        Object [] fila1=new Object[3];
+        fila1[0]=jComboBox1.getSelectedItem().toString();
+        fila1[1]=jTextField1.getText();
+        fila1[2]=jTextField2.getText();
+        modelo.addRow(fila1);
+        Object [] fila2=new Object[3];
+        fila2[0]=jComboBox2.getSelectedItem().toString();
+        fila2[1]=jTextField3.getText();
+        fila2[2]=jTextField4.getText();
+        modelo.addRow(fila2);
+        fac.tblVentas.setModel(modelo);
+        }
+        else if(jButton2.isVisible()==true){
+        Object [] fila1=new Object[3];
+        fila1[0]=jComboBox1.getSelectedItem().toString();
+        fila1[1]=jTextField1.getText();
+        fila1[2]=jTextField2.getText();
+        modelo.addRow(fila1);
+        fac.tblVentas.setModel(modelo);
+    }
+    }
+    
 }

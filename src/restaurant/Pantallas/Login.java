@@ -99,6 +99,11 @@ private SimpleDateFormat f;
             }
         });
 
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jPasswordField1KeyTyped(evt);
@@ -212,6 +217,10 @@ private SimpleDateFormat f;
         }
     }//GEN-LAST:event_jPasswordField1KeyTyped
 
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,7 +327,7 @@ private SimpleDateFormat f;
                         caja caj=new caja();
                         caj.setVisible(true);
                         this.setVisible(false);
-                        caj.jLabel12.setText(nombre);
+                        caj.jved.setText(nombre);
                         
                         break;
                     case "Recepcionista":
