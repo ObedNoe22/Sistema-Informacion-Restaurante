@@ -415,7 +415,7 @@ private void imprimir() {
         pagina.drawString("TOTAL A PAGAR " + jTextField7.getText(),220,420);
         pagina.drawString("=================",220,440);
         pagina.drawString("Esta boleta no tiene valor fiscal, solo para uso interno.:",220,460);
-        pagina.drawString("Descripciones........",220,480);
+        pagina.drawString("Clarence Food S.A de C.V 2k17",220,480);
 
         }
         pagina.dispose();
